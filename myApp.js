@@ -4,6 +4,18 @@ const app = express();
 const helmet = require('helmet');
 app.use(helmet());
 
+const bcrypt = require('bcrypt');
+
+const myPlaintextPassword = 'passw0rd!';
+const saltRounds = 13;
+bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
+  console.log(hash);
+  bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
+    console.log(res);
+  });
+});  
+
+
 app.use(helmet.hidePoweredBy());
 
 app.use(helmet.frameguard({ action: 'deny'}));
@@ -45,16 +57,7 @@ app.use(
 );
 
 
-const bcrypt = require('bcrypt');
 
-const myPlaintextPassword = 'passw0rd!';
-const saltRounds = 13;
-bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
-  console.log(hash);
-  bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
-    console.log(res);
-  });
-});
 
 
 
