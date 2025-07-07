@@ -49,15 +49,12 @@ const bcrypt = require('bcrypt');
 
 const myPlaintextPassword = 'passw0rd!';
 const saltRounds = 13;
-
 bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
   console.log(hash);
   bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
-    console.log(res); 
+    console.log(res);
   });
 });
-
-
 
 
 
