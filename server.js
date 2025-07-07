@@ -9,21 +9,7 @@ app.disable("x-powered-by");
 var fs = require("fs");
 var path = require("path");
 
-function hashPasswordMiddleware(req, res, next) {
-  const myPlaintextPassword = 'passw0rd!';
-  const saltRounds = 13;
-
-  bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
-    if (err) return next(err);
-    console.log(hash);
-    bcrypt.compare(myPlaintextPassword, hash, (err, result) => {
-      if (err) return next(err);
-      console.log(result); 
-      next();
-    });
-  });
-}
-app.use(hashPasswordMiddleware);
+const bcrypt = require('bcrypt');
 
 app.use(function (req, res, next) {
   res.set({
