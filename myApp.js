@@ -45,7 +45,7 @@ app.use(
 );
 
 
-
+const bcrypt = require('bcrypt');
 
 const myPlaintextPassword = 'passw0rd!';
 const saltRounds = 13;
