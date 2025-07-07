@@ -11,6 +11,8 @@ var path = require("path");
 
 const bcrypt = require('bcrypt');
 
+
+
 app.use(function (req, res, next) {
   res.set({
     "Access-Control-Allow-Origin": "*",

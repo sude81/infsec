@@ -5,15 +5,6 @@ const helmet = require('helmet');
 app.use(helmet());
 
 
-bcrypt.hash('passw0rd!', 13, (err, hash) => {
-  console.log(hash);
-  //$2a$12$Y.PHPE15wR25qrrtgGkiYe2sXo98cjuMCG1YwSI5rJW1DSJp0gEYS
-  bcrypt.compare('passw0rd!', hash, (err, res) => {
-    console.log(res); //true
-  });
-});
-
-
 
 app.use(helmet.hidePoweredBy());
 
@@ -82,7 +73,7 @@ app.use(
 
 
 
-module.exports = app;
+
 const api = require('./server.js');
 app.use(express.static('public'));
 app.disable('strict-transport-security');
@@ -94,3 +85,4 @@ let port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Your app is listening on port ${port}`);
 });
+module.exports = app;
